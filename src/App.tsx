@@ -1,5 +1,11 @@
+import InterviewForm from "./ui/form/InterviewForm";
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <InterviewForm />
+    </>
+  );
 }
 
 export default App;
