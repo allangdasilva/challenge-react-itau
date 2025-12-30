@@ -1,1 +1,49 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/roboto-v50-latin-900.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/roboto-v50-latin-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/roboto-v50-latin-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-light: #ffffff;
+  --color-dark: #000000;
+
+  --color-disabled: #cfd1d3;
+  --color-body: #4c4c4c;
+  --color-placeholder: #757575;
+
+  --color-primary: #f77102;
+  --color-secondary: #150183;
+  --color-bg: #f79c5f;
+
+  --font-roboto: "Roboto", sans-serif;
+}
+
+@utility font-body {
+  @apply font-roboto font-normal;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  line-height: 1.25;
+}
+@utility font-title {
+  @apply font-roboto font-black;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  line-height: 1;
+}
