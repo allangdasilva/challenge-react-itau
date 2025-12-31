@@ -4,6 +4,7 @@ const InputField = ({
   label,
   type,
   name,
+  ...props
 }: {
   label: string;
   type: string;
@@ -12,7 +13,7 @@ const InputField = ({
   return (
     <div>
       <label htmlFor={name}>{label}</label>
-      <input type={type} id={name} />
+      <input {...props} type={type} id={name} name={name} />
     </div>
   );
 };
