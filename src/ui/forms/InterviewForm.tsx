@@ -33,12 +33,14 @@ const InterviewForm = () => {
             name="select-vacancy"
             options={["Backend", "Frontend", "QA"]}
             placeholder="Selecione a vaga"
+            required
           />
           <SelectField
             label="Selecione um nível"
             name="select-level"
             options={["Jr.", "Pl.", "Sn."]}
             placeholder="Nv."
+            required
           />
         </div>
 

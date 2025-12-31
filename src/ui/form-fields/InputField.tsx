@@ -25,7 +25,7 @@ const InputField = ({
         id={name}
         name={name}
         placeholder={placeholder}
-        className={`${rounded} w-full p-4 outline-0 font-body placeholder:font-body placeholder:text-placeholder focus:outline-2 focus:outline-secondary bg-light`}
+        className={`${rounded} w-full p-4 outline-0 font-body text-dark placeholder:font-body placeholder:text-placeholder border-b-2 border-disabled focus:border-secondary focus:outline-none bg-light`}
       />
     </div>
   );
