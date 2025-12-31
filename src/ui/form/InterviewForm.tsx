@@ -1,6 +1,7 @@
 import React from "react";
 import InputField from "./InputField";
 import SelectField from "./SelectField";
+import TextareaField from "./TextareaField";
 
 const InterviewForm = () => {
   return (
@@ -21,6 +22,12 @@ const InterviewForm = () => {
         name="select-level"
         options={["Jr.", "Pl.", "Sn."]}
         placeholder="Nv."
+      />
+
+      <TextareaField
+        label="Fale um pouco sobre você"
+        name="about-yourself"
+        placeholder="Fale um pouco sobre você"
       />
     </form>
   );
