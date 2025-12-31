@@ -1,7 +1,7 @@
 import React from "react";
-import InputField from "./InputField";
-import SelectField from "./SelectField";
-import TextareaField from "./TextareaField";
+import InputField from "../form-fields/InputField";
+import SelectField from "../form-fields/SelectField";
+import TextareaField from "../form-fields/TextareaField";
 import Button from "../Button";
 
 const InterviewForm = () => {

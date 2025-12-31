@@ -1,4 +1,4 @@
-import InterviewForm from "./ui/form/InterviewForm";
+import InterviewForm from "./ui/forms/InterviewForm";
 
 function App() {
   return (
