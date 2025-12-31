@@ -7,7 +7,14 @@ const Button = ({
   type: "submit" | "reset" | "button" | undefined;
   children: React.ReactNode;
 }) => {
-  return <button type={type}>{children}</button>;
+  return (
+    <button
+      className="py-4 px-8 font-body font-bold cursor-pointer text-light rounded-lg bg-secondary hover:bg-light hover:text-secondary focus:bg-light focus:text-secondary focus:outline-2 focus:outline-secondary transition-colors"
+      type={type}
+    >
+      {children}
+    </button>
+  );
 };
 
 export default Button;
