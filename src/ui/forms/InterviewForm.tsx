@@ -48,6 +48,9 @@ const InterviewForm = () => {
           label="Fale um pouco sobre você"
           name="about-yourself"
           placeholder="Fale um pouco sobre você"
+          rounded="rounded-b-lg"
+          rows={4}
+          maxLength={255}
         />
       </div>
 
