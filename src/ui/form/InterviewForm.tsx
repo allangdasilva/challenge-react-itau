@@ -2,6 +2,7 @@ import React from "react";
 import InputField from "./InputField";
 import SelectField from "./SelectField";
 import TextareaField from "./TextareaField";
+import Button from "../Button";
 
 const InterviewForm = () => {
   return (
@@ -39,6 +40,8 @@ const InterviewForm = () => {
         name="about-yourself"
         placeholder="Fale um pouco sobre você"
       />
+
+      <Button type="submit">Enviar</Button>
     </form>
   );
 };
