@@ -8,8 +8,18 @@ const InterviewForm = () => {
     <form action="">
       <h2>_Trabalhe Conosco</h2>
 
-      <InputField label="Nome" type="text" name="first-name" />
-      <InputField label="Sobrenome" type="text" name="last-name" />
+      <InputField
+        label="Nome"
+        type="text"
+        name="first-name"
+        placeholder="Nome"
+      />
+      <InputField
+        label="Sobrenome"
+        type="text"
+        name="last-name"
+        placeholder="Sobrenome"
+      />
 
       <SelectField
         label="Selecione a vaga"
