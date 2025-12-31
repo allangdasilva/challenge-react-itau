@@ -6,7 +6,7 @@ import Button from "../Button";
 
 const InterviewForm = () => {
   return (
-    <form className="m-auto p-8 space-y-6 rounded-2xl max-w-lg bg-primary">
+    <form className="w-full m-auto p-8 space-y-6 rounded-2xl max-w-lg bg-primary">
       <h2 className="font-title text-light">_Trabalhe Conosco</h2>
 
       <div className="space-y-4">
