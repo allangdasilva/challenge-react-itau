@@ -1,5 +1,13 @@
 import React from "react";
 
+interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+  type: string;
+  name: string;
+  placeholder: string;
+  rounded?: string;
+}
+
 const InputField = ({
   label,
   type,
@@ -7,13 +15,7 @@ const InputField = ({
   placeholder,
   rounded,
   ...props
-}: {
-  label: string;
-  type: string;
-  name: string;
-  placeholder: string;
-  rounded?: string;
-}) => {
+}: InputFieldProps) => {
   return (
     <div>
       <label className="sr-only" htmlFor={name}>
