@@ -16,12 +16,14 @@ const InterviewForm = () => {
             type="text"
             name="first-name"
             placeholder="Nome"
+            rounded="max-sm:rounded-t-lg sm:rounded-tl-lg"
           />
           <InputField
             label="Sobrenome"
             type="text"
             name="last-name"
             placeholder="Sobrenome"
+            rounded="sm:rounded-tr-lg"
           />
         </div>
 
