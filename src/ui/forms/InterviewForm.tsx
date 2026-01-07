@@ -3,31 +3,18 @@ import InputField from "../form-fields/InputField";
 import SelectField from "../form-fields/SelectField";
 import TextareaField from "../form-fields/TextareaField";
 import Button from "../Button";
+import { useForm } from "react-hook-form";
 
 const InterviewForm = () => {
-  const [field, setField] = React.useState({
-    firstName: "",
-    lastName: "",
-    vacancy: "",
-    level: "",
-    message: "",
-  });
+  const { register, handleSubmit } = useForm();
 
-  function handleChange<
-    T extends HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-  >(e: React.ChangeEvent<T>) {
-    const { name, value } = e.target;
-    setField({ ...field, [name]: value });
-  }
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    console.log(field);
+  function onSubmit(data: any) {
+    console.log(JSON.stringify(data, null, 2));
   }
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(onSubmit)}
       className="w-full m-auto p-8 space-y-6 rounded-2xl max-w-lg bg-primary"
     >
       <h2 className="font-title text-light">_Trabalhe Conosco</h2>
@@ -35,53 +22,45 @@ const InterviewForm = () => {
       <div className="space-y-4">
         <div className="grid gap-4 sm:grid-cols-2">
           <InputField
-            label="Nome"
             type="text"
-            name="firstName"
+            label="Nome"
             placeholder="Nome"
             rounded="max-sm:rounded-t-lg sm:rounded-tl-lg"
-            value={field.firstName}
-            onChange={(e) => handleChange<HTMLInputElement>(e)}
+            {...register("first_name")}
           />
           <InputField
-            label="Sobrenome"
             type="text"
-            name="lastName"
+            label="Sobrenome"
             placeholder="Sobrenome"
             rounded="sm:rounded-tr-lg"
-            value={field.lastName}
-            onChange={(e) => handleChange<HTMLInputElement>(e)}
+            {...register("last_name")}
           />
         </div>
 
         <div className="grid gap-4 sm:grid-cols-[1.5fr_0.5fr]">
           <SelectField
-            label="Selecione a vaga"
-            name="vacancy"
-            options={["Backend", "Frontend", "QA"]}
+            label="Vaga"
             placeholder="Selecione a vaga"
+            options={["Backend", "Frontend", "QA"]}
             required
-            onChange={(e) => handleChange<HTMLSelectElement>(e)}
+            {...register("vacancy")}
           />
           <SelectField
-            label="Selecione um nível"
-            name="level"
-            options={["Jr.", "Pl.", "Sn."]}
+            label="Nível"
             placeholder="Nv."
+            options={["Jr.", "Pl.", "Sn."]}
             required
-            onChange={(e) => handleChange<HTMLSelectElement>(e)}
+            {...register("level")}
           />
         </div>
 
         <TextareaField
-          label="Fale um pouco sobre você"
-          name="message"
+          label="Mensagem"
           placeholder="Fale um pouco sobre você"
           rounded="rounded-b-lg"
           rows={4}
           maxLength={255}
-          value={field.message}
-          onChange={(e) => handleChange<HTMLTextAreaElement>(e)}
+          {...register("message")}
         />
       </div>
 
