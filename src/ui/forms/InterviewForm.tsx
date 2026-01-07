@@ -4,11 +4,32 @@ import SelectField from "../form-fields/SelectField";
 import TextareaField from "../form-fields/TextareaField";
 import Button from "../Button";
 import { useForm } from "react-hook-form";
+import z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const interviewFormSchema = z.object({
+  first_name: z.string().nonempty("Nome é obrigatório"),
+  last_name: z.string().nonempty("Sobrenome é obrigatório"),
+  vacancy: z.string(),
+  level: z.string(),
+  message: z
+    .string()
+    .nonempty("Descrição é obrigatório")
+    .min(20, "Sua descrição deve ter no mínimo 20 caracteres"),
+});
+
+type InterviewFormData = z.infer<typeof interviewFormSchema>;
 
 const InterviewForm = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<InterviewFormData>({
+    resolver: zodResolver(interviewFormSchema),
+  });
 
-  function onSubmit(data: any) {
+  function onSubmit(data: InterviewFormData) {
     console.log(JSON.stringify(data, null, 2));
   }
 
@@ -21,47 +42,62 @@ const InterviewForm = () => {
 
       <div className="space-y-4">
         <div className="grid gap-4 sm:grid-cols-2">
-          <InputField
-            type="text"
-            label="Nome"
-            placeholder="Nome"
-            rounded="max-sm:rounded-t-lg sm:rounded-tl-lg"
-            {...register("first_name")}
-          />
-          <InputField
-            type="text"
-            label="Sobrenome"
-            placeholder="Sobrenome"
-            rounded="sm:rounded-tr-lg"
-            {...register("last_name")}
-          />
+          <div className="flex flex-col gap-1 text-sm text-light">
+            <InputField
+              type="text"
+              label="Nome"
+              placeholder="Nome"
+              rounded="max-sm:rounded-t-lg sm:rounded-tl-lg"
+              {...register("first_name")}
+            />
+            {errors.first_name && <span>{errors.first_name.message}</span>}
+          </div>
+
+          <div className="flex flex-col gap-1 text-sm text-light">
+            <InputField
+              type="text"
+              label="Sobrenome"
+              placeholder="Sobrenome"
+              rounded="sm:rounded-tr-lg"
+              {...register("last_name")}
+            />
+            {errors.last_name && <span>{errors.last_name.message}</span>}
+          </div>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-[1.5fr_0.5fr]">
-          <SelectField
-            label="Vaga"
-            placeholder="Selecione a vaga"
-            options={["Backend", "Frontend", "QA"]}
-            required
-            {...register("vacancy")}
-          />
-          <SelectField
-            label="Nível"
-            placeholder="Nv."
-            options={["Jr.", "Pl.", "Sn."]}
-            required
-            {...register("level")}
-          />
+          <div className="flex flex-col gap-1 text-sm text-light">
+            <SelectField
+              label="Vaga"
+              placeholder="Selecione a vaga"
+              options={["Backend", "Frontend", "QA"]}
+              required
+              {...register("vacancy")}
+            />
+          </div>
+
+          <div className="flex flex-col gap-1 text-sm text-light">
+            <SelectField
+              label="Nível"
+              placeholder="Nv."
+              options={["Jr.", "Pl.", "Sn."]}
+              required
+              {...register("level")}
+            />
+          </div>
         </div>
 
-        <TextareaField
-          label="Mensagem"
-          placeholder="Fale um pouco sobre você"
-          rounded="rounded-b-lg"
-          rows={4}
-          maxLength={255}
-          {...register("message")}
-        />
+        <div className="flex flex-col gap-1 text-sm text-light">
+          <TextareaField
+            label="Mensagem"
+            placeholder="Fale um pouco sobre você"
+            rounded="rounded-b-lg"
+            rows={4}
+            maxLength={255}
+            {...register("message")}
+          />
+          {errors.message && <span>{errors.message.message}</span>}
+        </div>
       </div>
 
       <div className="grid justify-center">

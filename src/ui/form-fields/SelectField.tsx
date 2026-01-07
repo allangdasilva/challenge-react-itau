@@ -9,7 +9,7 @@ interface SelectFieldProps
 
 const SelectField = (props: SelectFieldProps) => {
   return (
-    <div>
+    <>
       <label className="sr-only" htmlFor={props.label}>
         {props.label}
       </label>
@@ -28,7 +28,7 @@ const SelectField = (props: SelectFieldProps) => {
           </option>
         ))}
       </select>
-    </div>
+    </>
   );
 };
 

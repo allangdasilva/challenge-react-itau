@@ -7,7 +7,7 @@ interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const InputField = (props: InputFieldProps) => {
   return (
-    <div>
+    <>
       <label className="sr-only" htmlFor={props.label}>
         {props.label}
       </label>
@@ -16,7 +16,7 @@ const InputField = (props: InputFieldProps) => {
         className={`${props.rounded} w-full p-4 outline-0 font-body text-dark placeholder:font-body placeholder:text-placeholder border-b-2 border-disabled focus:border-secondary focus:outline-none bg-light`}
         {...props}
       />
-    </div>
+    </>
   );
 };
 
